@@ -109,3 +109,123 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+//
+//mport 'package:eduplus_app/dao/db_helper.dart';
+//import 'package:eduplus_app/dao/ep_location.dart';
+//import 'package:eduplus_app/routes.dart';
+//import 'package:eduplus_app/screens/commons/warning_screen.dart';
+//import 'package:eduplus_app/screens/home/home_page_parent.dart';
+//import 'package:eduplus_app/screens/home/home_page_teacher.dart';
+//import 'package:eduplus_app/screens/login/username_login_screen.dart';
+//import 'package:eduplus_app/utils/eduplus_localization.dart';
+//import 'package:eduplus_app/utils/eduplus_preference.dart';
+//import 'package:eduplus_app/utils/globals.dart' as globals;
+//import 'package:flutter/material.dart';
+//
+//void main() async {
+//  Widget defaultWidget;
+//
+//  ///firstly opening database connection
+//  await DBHelper.dbhOpenDatabase();
+//  EduPlusSharedPreference prefs = new EduPlusSharedPreference();
+//  String appLanguage = await prefs.getString(PreferenceKey.APP_LANGUAGE);
+//
+//  ///Setting App language
+//  EduplusLocalizations.setAppLanguage(appLanguage);
+//  bool value = await prefs.getBool(PreferenceKey.IS_USER_LOGGED_IN);
+//
+//  if (value) {
+//    int userId = await prefs.getInt(PreferenceKey.CURRENT_USER_ID);
+//    globals.epUserId = userId;
+//
+//    bool isTrackingEnabled = await prefs.getBool(PreferenceKey.IS_TRACKING_ENABLED);
+//    globals.isTrackingEnabled = isTrackingEnabled;
+//
+//    globals.isHasMultipleRoles = await prefs.getBool(PreferenceKey.HAS_MULTIPLE_ROLES);
+//
+//    String userRole = await prefs.getString(PreferenceKey.USER_ROLE);
+//    globals.epRole = userRole;
+//
+//    if (userRole == 'PARENT') {
+//      int selectedTrackableID = await prefs.getInt(PreferenceKey.SELECTED_TRACKABLE_ID);
+//      globals.selectedTrackableId = selectedTrackableID;
+//    }
+//
+//    int selectedLocation = await prefs.getInt(PreferenceKey.SELECTED_LOCATION_ID);
+//    print("selected location = $selectedLocation");
+//    globals.locationId = selectedLocation;
+//    List<EPLocation> locationsList;
+//
+//    if (selectedLocation == null || selectedLocation == -1) {
+//      print("resting location");
+//      await EPLocation.listAllLocations().then((List<EPLocation> data) {
+//        locationsList = data;
+//        print("print data = $data");
+//      }).catchError((e) {
+//        locationsList = null;
+//        print("errro fetching location");
+//      });
+//    }
+//
+//    defaultWidget = (userRole == 'PARENT') ? HomeTabParent() : HomeTabTeacher(locationsList, selectedLocation);
+//  } else {
+//    defaultWidget = new UsernameLoginScreen();
+//  }
+//
+//  runApp(new MyApp(defaultWidget));
+//}
+//
+//class MyApp extends StatelessWidget {
+//  final Widget defaultWidget;
+//
+//  MyApp(this.defaultWidget); //// This widget is the root of your application.
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+//      print("Error caught in the App $errorDetails");
+//      return getErrorWidget(context, errorDetails);
+//    };
+//
+//    return new MaterialApp(
+//      title: 'EduPlus',
+//      theme: new ThemeData(
+//        primarySwatch: Colors.blue,
+//      ),
+//      routes: routes,
+//      home: defaultWidget,
+//      localizationsDelegates: [
+//        // ... app-specific localization delegate[s] here
+//        //const TranslationsDelegate(),
+//        const EduplusLocalizationsDelegate(),
+////        GlobalMaterialLocalizations.delegate,
+////        GlobalWidgetsLocalizations.delegate,
+//      ],
+//      supportedLocales: [
+//        const Locale('en', 'US'), //English
+//        const Locale('ja', 'JP'), //japenese
+//        const Locale('ml', 'ML'), //malayalam
+//        const Locale('ar', 'AR'), //Arabic
+//        // ... other locales the app supports
+//      ],
+//    );
+//  }
+//
+//  Widget getErrorWidget(BuildContext context, FlutterErrorDetails error) {
+//    print("ERROR>FLUTTER > ${error?.exception ?? ""}");
+//
+//    return Scaffold(
+//      body: Center(
+//        child: new WaringScreen(
+//          message: "Something went wrong\nPlease Re-launch Application",
+//          title: "",
+//          iconData: Icons.home,
+//          retry: true,
+//          onPressed: () async {
+//          },
+//        ),
+//      ),
+//    );
+//  }
+//
+//}
