@@ -1,10 +1,9 @@
-library eduplus.globals;
+//library eduplus.globals;
 
 //import 'package:eduplus_app/utils/enumerators.dart';
 
 String epRole = "";
 
-//MenuType get epMenu => (epRole == "PARENT" ? MenuType.parent : MenuType.teacher);
 
 int epUserId = 0;
 int locationId = -1;

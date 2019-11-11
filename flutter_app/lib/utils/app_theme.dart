@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class EduplusAppStyle extends TextStyle {
-  const EduplusAppStyle(
+class AppStyle extends TextStyle {
+  const AppStyle(
       {double fontSize: 12.0,
       FontWeight fontWeight,
       Color color: Colors.black,

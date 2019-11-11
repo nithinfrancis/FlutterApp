@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:intro_views_flutter/Models/page_view_model.dart';
+import 'package:intro_views_flutter/Models/page_view_model.dart';
 
 const String DATE_TIME_FORMAT_LONG = "dd-MMM-yyyy, hh:mm a";
 const String DATE_TIME_FORMAT_SHORT = "dd-MM-yyyy, hh:mm a";
@@ -627,16 +627,106 @@ class CountriesKey {
 
 //for the welcome guide
 class IntroViews {
-//  var _pages = new List<PageViewModel>();
-  var headingTextStyle = new TextStyle(
-    fontSize: 24.0,
-    fontFamily: 'MyFont',
-    color: Colors.white,
-    fontWeight: FontWeight.bold,
-  );
+  var _pages = new List<PageViewModel>();
+//  var headingTextStyle = new TextStyle(
+//    fontSize: 24.0,
+//    fontFamily: 'MyFont',_pages
+//    color: Colors.white,
+//    fontWeight: FontWeight.bold,
+//  );
   var descriptionTextStyle = new TextStyle(fontSize: 20.0, fontFamily: 'MyFont', color: Colors.white);
 
-//  IntroViews({String role, bool isTrackingEnabled}) {
+  IntroViews({String role, bool isTrackingEnabled}) {
+
+
+    _pages = [
+      new PageViewModel(
+          pageColor: const Color(0xFF03A9F4),
+          //iconImageAssetPath: '',
+          iconColor: null,
+          bubbleBackgroundColor: Colors.white,
+          body: Text(
+            "Never miss out any information from your child’s school",
+          ),
+          title: Text(
+            'Stay in tune with your child at school',
+//            style: headingTextStyle,
+            textAlign: TextAlign.center,
+          ),
+          textStyle: descriptionTextStyle,
+//          mainImage: Image.asset(
+//            'assets/images/parentguide1.png',
+//            height: 285.0,
+//            width: 285.0,
+//            alignment: Alignment.center,
+//          )
+      ),
+      new PageViewModel(
+        pageColor: const Color(0xFF8BC34A),
+        //iconImageAssetPath: 'assets/leaves.png',
+        iconColor: null,
+        bubbleBackgroundColor: Colors.white,
+        body: Text(
+          'Easy access to daily academic updates – homework, school diary, time-tables and more',
+        ),
+        title: Text(
+          'Keep an eye on daily processes ',
+//          style: headingTextStyle,
+          textAlign: TextAlign.center,
+        ),
+//        mainImage: Image.asset(
+//          'assets/images/parentguide2.png',
+//          height: 285.0,
+//          width: 285.0,
+//          alignment: Alignment.center,
+//        ),
+        textStyle: descriptionTextStyle,
+      ),
+      new PageViewModel(
+        pageColor: const Color(0xFF607D8B),
+        // iconImageAssetPath: 'assets/school-diary.png',
+        iconColor: null,
+        bubbleBackgroundColor: Colors.white,
+        body: Text(
+          "Regular and prompt availability of school circulars",
+        ),
+        title: Text(
+          "Stay updated about important happenings",
+//          style: headingTextStyle,
+          textAlign: TextAlign.center,
+        ),
+//        mainImage: Image.asset(
+//          'assets/images/parentguide3.png',
+//          height: 285.0,
+//          width: 285.0,
+//          alignment: Alignment.center,
+//        ),
+        textStyle: descriptionTextStyle,
+      ),
+      new PageViewModel(
+          pageColor: const Color.fromARGB(255, 25, 118, 210),
+          // iconImageAssetPath: 'assets/homework.png',
+          iconColor: null,
+          bubbleBackgroundColor: Colors.white,
+          body: Text(
+            'Easy communication with teachers via instant messages',
+          ),
+          title: Text(
+            "Stay connected with your child's teachers",
+//            style: headingTextStyle,
+            textAlign: TextAlign.center,
+          ),
+          textStyle: descriptionTextStyle,
+//          mainImage: Image.asset(
+//            'assets/images/parentguide4.png',
+//            height: 285.0,
+//            width: 285.0,
+//            alignment: Alignment.center,
+//          )
+      ),
+    ];
+
+
 //    if (role == "PARENT") {
 //      if (isTrackingEnabled) {
 //        _pages = [
@@ -650,7 +740,7 @@ class IntroViews {
 //              ),
 //              title: Text(
 //                'An answer to all your worries about your child!',
-//                style: headingTextStyle,
+////                style: headingTextStyle,
 //                textAlign: TextAlign.center,
 //              ),
 //              textStyle: descriptionTextStyle,
@@ -670,7 +760,7 @@ class IntroViews {
 //            ),
 //            title: Text(
 //              'Never miss out any activity of your child!',
-//              style: headingTextStyle,
+////              style: headingTextStyle,
 //              textAlign: TextAlign.center,
 //            ),
 //            mainImage: Image.asset(
@@ -691,7 +781,7 @@ class IntroViews {
 //            ),
 //            title: Text(
 //              "No more worries about your child's school bus",
-//              style: headingTextStyle,
+////              style: headingTextStyle,
 //              textAlign: TextAlign.center,
 //            ),
 //            mainImage: Image.asset(
@@ -712,7 +802,7 @@ class IntroViews {
 //              ),
 //              title: Text(
 //                "Stay connected with your child's teachers",
-//                style: headingTextStyle,
+////                style: headingTextStyle,
 //                textAlign: TextAlign.center,
 //              ),
 //              textStyle: descriptionTextStyle,
@@ -724,90 +814,7 @@ class IntroViews {
 //              )),
 //        ];
 //      } else {
-//        _pages = [
-//          new PageViewModel(
-//              pageColor: const Color(0xFF03A9F4),
-//              //iconImageAssetPath: '',
-//              iconColor: null,
-//              bubbleBackgroundColor: Colors.white,
-//              body: Text(
-//                "Never miss out any information from your child’s school",
-//              ),
-//              title: Text(
-//                'Stay in tune with your child at school',
-//                style: headingTextStyle,
-//                textAlign: TextAlign.center,
-//              ),
-//              textStyle: descriptionTextStyle,
-//              mainImage: Image.asset(
-//                'assets/images/parentguide1.png',
-//                height: 285.0,
-//                width: 285.0,
-//                alignment: Alignment.center,
-//              )),
-//          new PageViewModel(
-//            pageColor: const Color(0xFF8BC34A),
-//            //iconImageAssetPath: 'assets/leaves.png',
-//            iconColor: null,
-//            bubbleBackgroundColor: Colors.white,
-//            body: Text(
-//              'Easy access to daily academic updates – homework, school diary, time-tables and more',
-//            ),
-//            title: Text(
-//              'Keep an eye on daily processes ',
-//              style: headingTextStyle,
-//              textAlign: TextAlign.center,
-//            ),
-//            mainImage: Image.asset(
-//              'assets/images/parentguide2.png',
-//              height: 285.0,
-//              width: 285.0,
-//              alignment: Alignment.center,
-//            ),
-//            textStyle: descriptionTextStyle,
-//          ),
-//          new PageViewModel(
-//            pageColor: const Color(0xFF607D8B),
-//            // iconImageAssetPath: 'assets/school-diary.png',
-//            iconColor: null,
-//            bubbleBackgroundColor: Colors.white,
-//            body: Text(
-//              "Regular and prompt availability of school circulars",
-//            ),
-//            title: Text(
-//              "Stay updated about important happenings",
-//              style: headingTextStyle,
-//              textAlign: TextAlign.center,
-//            ),
-//            mainImage: Image.asset(
-//              'assets/images/parentguide3.png',
-//              height: 285.0,
-//              width: 285.0,
-//              alignment: Alignment.center,
-//            ),
-//            textStyle: descriptionTextStyle,
-//          ),
-//          new PageViewModel(
-//              pageColor: const Color.fromARGB(255, 25, 118, 210),
-//              // iconImageAssetPath: 'assets/homework.png',
-//              iconColor: null,
-//              bubbleBackgroundColor: Colors.white,
-//              body: Text(
-//                'Easy communication with teachers via instant messages',
-//              ),
-//              title: Text(
-//                "Stay connected with your child's teachers",
-//                style: headingTextStyle,
-//                textAlign: TextAlign.center,
-//              ),
-//              textStyle: descriptionTextStyle,
-//              mainImage: Image.asset(
-//                'assets/images/parentguide4.png',
-//                height: 285.0,
-//                width: 285.0,
-//                alignment: Alignment.center,
-//              )),
-//        ];
+//
 //      }
 //    } else {
 //      if (isTrackingEnabled) {
@@ -962,7 +969,7 @@ class IntroViews {
 //        ];
 //      }
 //    }
-//  }
+  }
 
-//  List get pages => _pages;
+  List get pages => _pages;
 }

@@ -2,19 +2,19 @@ import 'dart:async';
 import 'dart:ui';
 
 //import 'package:eduplus_app/api/eduplus_error.dart';
-//import 'package:eduplus_app/utils/eduplus_preference.dart';
+//import 'package:eduplus_app/utils/app_preference.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
-class EduplusLocalizations {
-  EduplusLocalizations(this.locale);
+class AppLocalizations {
+  AppLocalizations(this.locale);
 
   final Locale locale;
   static List<String> supportedLanguages = ['en', 'ja', 'ml', 'ar'];
   static String eduplusAppLocale;
 
-  static EduplusLocalizations of(BuildContext context) {
-    return Localizations.of<EduplusLocalizations>(context, EduplusLocalizations);
+  static AppLocalizations of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
   static Map<String, Map<String, String>> get localizedValues => _localizedValues;
@@ -2760,17 +2760,17 @@ class EduplusLocalizations {
   }
 }
 
-class EduplusLocalizationsDelegate extends LocalizationsDelegate<EduplusLocalizations> {
-  const EduplusLocalizationsDelegate();
+class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+  const AppLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) => EduplusLocalizations.supportedLanguages.contains(locale.languageCode);
+  bool isSupported(Locale locale) => AppLocalizations.supportedLanguages.contains(locale.languageCode);
 
   @override
-  Future<EduplusLocalizations> load(Locale locale) {
-    return new SynchronousFuture<EduplusLocalizations>(new EduplusLocalizations(locale));
+  Future<AppLocalizations> load(Locale locale) {
+    return new SynchronousFuture<AppLocalizations>(new AppLocalizations(locale));
   }
 
   @override
-  bool shouldReload(EduplusLocalizationsDelegate old) => false;
+  bool shouldReload(AppLocalizationsDelegate old) => false;
 }
