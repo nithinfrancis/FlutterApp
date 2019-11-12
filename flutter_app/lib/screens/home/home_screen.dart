@@ -14,7 +14,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-    AppSharedPreference prefs = new AppSharedPreference();
+
+
+    void initState()
+    {
+        super.initState();
+        _setInitialData();
+    }
+    void _setInitialData()async {
+        AppSharedPreference prefs = new AppSharedPreference();
+        await prefs.setBoolean(PreferenceKey.IS_USER_LOGGED_IN, true);
+    }
+
+
+
     @override
     Widget build(BuildContext context) {
 //        IntroViews _introview = new IntroViews();

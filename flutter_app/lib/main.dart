@@ -6,6 +6,8 @@ import 'package:flutter_app/utils/app_preference.dart';
 import 'package:flutter_app/utils/app_localization.dart';
 import 'package:flutter_app/routes.dart';
 
+import 'dao/db_helper.dart';
+
 //import 'package:eduplus_app/dao/db_helper.dart';
 //import 'package:eduplus_app/dao/ep_location.dart';
 //import 'package:eduplus_app/routes.dart';
@@ -24,13 +26,14 @@ async {
 
 
   ///firstly opening database connection
-//  await DBHelper.dbhOpenDatabase();
-//  AppSharedPreference prefs = new AppSharedPreference();
+  await DBHelper.dbhOpenDatabase();
+  AppSharedPreference prefs = new AppSharedPreference();
 //  String appLanguage = await prefs.getString(PreferenceKey.APP_LANGUAGE);
 
   ///Setting App language
 //  AppLocalizations.setAppLanguage(appLanguage);
-//  bool value = await prefs.getBool(PreferenceKey.IS_USER_LOGGED_IN);
+ bool value = await prefs.getBool(PreferenceKey.IS_USER_LOGGED_IN);
+ print(value.toString());
 
 //  if (value) {
 //    int userId = await prefs.getInt(PreferenceKey.CURRENT_USER_ID);
@@ -67,13 +70,17 @@ async {
 //
 //    defaultWidget = (userRole == 'PARENT') ? HomeTabParent() : HomeTabTeacher(locationsList, selectedLocation);
 //  } else {
-    defaultWidget = new UserGuideView();
+
 //  }
 
-//  if(value)
-//    {}
-//  else
-//    {}
+  if(value)
+    {
+      defaultWidget = new HomeScreen();
+    }
+  else
+    {
+      defaultWidget = new UserGuideView();
+    }
 
   runApp(new MyApp(defaultWidget));
 }
