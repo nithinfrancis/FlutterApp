@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/app_preference.dart';
-import 'package:flutter_app/utils/constants.dart';
-import 'package:flutter_app/utils/globals.dart';
-import 'package:intro_views_flutter/intro_views_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
-//    final Widget homepage;
-
-//    const UserGuideView(this.homepage);
-
   @override
   State<StatefulWidget> createState() => new _HomeScreenState();
 }
