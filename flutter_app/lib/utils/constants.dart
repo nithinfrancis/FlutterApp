@@ -672,6 +672,8 @@ class IntroViews {
         title: Text(
           'Keep an eye on daily processes ',
 //          style: headingTextStyle,
+
+
           textAlign: TextAlign.center,
         ),
 //        mainImage: Image.asset(

@@ -51,7 +51,6 @@ class DBHelper {
     }
 
     /// Call to this method will remove the database file from local storage
-    // ignore: unused_element
     static Future _dbhDeleteDatabase() async {
         String databasePath = await _dbhGetDatabasePath();
         await deleteDatabase(databasePath);
@@ -106,7 +105,6 @@ class DBHelper {
             for (int i = 1; i < newVersion; i++) {
                 if (old == i) {
                     if (i == 1) {
-                        // Changes for version 1-2 update
                         /*
                  * Changes for app version 2.0.1 on Android and 1.0.1 on iOS
                  * ------------------------------------------------------
