@@ -9,32 +9,29 @@ class HomeScreen extends StatefulWidget {
 
 //    const UserGuideView(this.homepage);
 
-    @override
-    State<StatefulWidget> createState() => new _HomeScreenState();
+  @override
+  State<StatefulWidget> createState() => new _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void initState() {
+    super.initState();
+    _setInitialData();
+  }
 
+  void _setInitialData() async {
+    AppSharedPreference prefs = new AppSharedPreference();
+    await prefs.setBoolean(PreferenceKey.IS_USER_LOGGED_IN, true);
+  }
 
-    void initState()
-    {
-        super.initState();
-        _setInitialData();
-    }
-    void _setInitialData()async {
-        AppSharedPreference prefs = new AppSharedPreference();
-        await prefs.setBoolean(PreferenceKey.IS_USER_LOGGED_IN, true);
-    }
-
-
-
-    @override
-    Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
 //        IntroViews _introview = new IntroViews();
 //        var pages = _introview.pages;
-        return new Scaffold(
-            body:Center(child: Text("Menu PAge"),
-            ),
+    return new Scaffold(
+      body: Center(
+        child: Text("Menu PAge"),
+      ),
 //            new Builder(
 //                builder: (context) =>
 //                new IntroViewsFlutter(
@@ -54,6 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
 //                    ),
 //                ), //IntroViewsFlutter
 //            ),
-        );
-    }
+    );
+  }
 }

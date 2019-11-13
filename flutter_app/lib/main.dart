@@ -20,10 +20,8 @@ import 'dao/db_helper.dart';
 //import 'package:eduplus_app/utils/globals.dart' as globals;
 //import 'package:flutter/material.dart';
 
-Future main()
-async {
+Future main() async {
   Widget defaultWidget;
-
 
   ///firstly opening database connection
   await DBHelper.dbhOpenDatabase();
@@ -32,8 +30,8 @@ async {
 
   ///Setting App language
 //  AppLocalizations.setAppLanguage(appLanguage);
- bool value = await prefs.getBool(PreferenceKey.IS_USER_LOGGED_IN);
- print(value.toString());
+  bool value = await prefs.getBool(PreferenceKey.IS_USER_LOGGED_IN);
+  print(value.toString());
 
 //  if (value) {
 //    int userId = await prefs.getInt(PreferenceKey.CURRENT_USER_ID);
@@ -73,19 +71,14 @@ async {
 
 //  }
 
-  if(value)
-    {
-      defaultWidget = new HomeScreen();
-    }
-  else
-    {
-      defaultWidget = new UserGuideView();
-    }
+  if (value) {
+    defaultWidget = new HomeScreen();
+  } else {
+    defaultWidget = new UserGuideView();
+  }
 
   runApp(new MyApp(defaultWidget));
 }
-
-
 
 //=> runApp(MyApp());
 //
@@ -293,8 +286,7 @@ class MyApp extends StatelessWidget {
     print("ERROR>FLUTTER > ${error?.exception ?? ""}");
 
     return Scaffold(
-      body: Center(
-        child:Text("jaba")
+      body: Center(child: Text("jaba")
 
 //        new WaringScreen(
 //          message: "Something went wrong\nPlease Re-launch Application",
@@ -304,8 +296,7 @@ class MyApp extends StatelessWidget {
 //          onPressed: () async {
 //          },
 //        ),
-      ),
+          ),
     );
   }
-
 }
