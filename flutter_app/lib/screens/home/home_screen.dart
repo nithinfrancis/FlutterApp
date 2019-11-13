@@ -26,31 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-//        IntroViews _introview = new IntroViews();
-//        var pages = _introview.pages;
     return new Scaffold(
       body: Center(
         child: Text("Menu PAge"),
       ),
-//            new Builder(
-//                builder: (context) =>
-//                new IntroViewsFlutter(
-//                    pages,
-//                    onTapDoneButton: () {
-//                        Navigator.pushReplacement(
-//                            context,
-//                            new MaterialPageRoute(
-//                                builder: (context) => widget.homepage,
-//                            ), //MaterialPageRoute
-//                        );
-//                    },
-//                    showSkipButton: true, //Whether you want to show the skip button or not.
-//                    pageButtonTextStyles: TextStyle(
-//                        color: Colors.white,
-//                        fontSize: 18.0,
-//                    ),
-//                ), //IntroViewsFlutter
-//            ),
     );
   }
 }
