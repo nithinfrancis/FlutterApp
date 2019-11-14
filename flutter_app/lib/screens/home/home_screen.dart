@@ -21,7 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: Center(
-        child: Text("Menu PAge"),
+        child:Container(
+          child: Text("Menuu "),
+        ),
       ),
     );
   }
