@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/home/home_screen_menu.dart';
 import 'package:flutter_app/utils/app_preference.dart';
-//import ;
-import 'homelist.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,9 +8,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen>with TickerProviderStateMixin  {
-  List<HomeList> homeList = HomeList.homeList;
   AnimationController animationController;
   bool multiple = true;
+
+  List<Menu> _menuList = new List();
   void initState() {
     animationController = AnimationController(
         duration: Duration(milliseconds: 2000), vsync: this);
@@ -23,10 +23,23 @@ class _HomeScreenState extends State<HomeScreen>with TickerProviderStateMixin  {
   void _setInitialData() async {
     AppSharedPreference prefs = new AppSharedPreference();
     await prefs.setBoolean(PreferenceKey.IS_USER_LOGGED_IN, true);
+    try{
+      List<Menu> menuitems = generateMenuList();
+      if(null != menuitems && menuitems.isNotEmpty){
+        _menuList.clear();
+        _menuList.addAll(menuitems);
+      }
+    }catch(e){
+      print("Exception in generate menu $e");
+    }
   }
   Future<bool> getData() async {
     await Future.delayed(const Duration(milliseconds: 0));
     return true;
+  }
+  List<Menu> generateMenuList() {
+    MenuList list = new MenuList();
+    return list.generateList(MenuUserType.MenuUserTypeParent, true);
   }
 
   @override
@@ -38,79 +51,24 @@ class _HomeScreenState extends State<HomeScreen>with TickerProviderStateMixin  {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      backgroundColor: AppTheme.white,
-      body: FutureBuilder(
-        future: getData(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return SizedBox();
-          } else {
-            return Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  appBar(),
-                  Expanded(
-                    child: FutureBuilder(
-                      future: getData(),
-                      builder: (context, snapshot) {
-                        if (!snapshot.hasData) {
-                          return SizedBox();
-                        } else {
-                          return GridView(
-                            padding:
-                            EdgeInsets.only(top: 0, left: 12, right: 12),
-                            physics: BouncingScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            children: List.generate(
-                              homeList.length,
-                                  (index) {
-                                var count = homeList.length;
-                                var animation =
-                                Tween(begin: 0.0, end: 1.0).animate(
-                                  CurvedAnimation(
-                                    parent: animationController,
-                                    curve: Interval((1 / count) * index, 1.0,
-                                        curve: Curves.fastOutSlowIn),
-                                  ),
-                                );
-                                animationController.forward();
-                                return HomeListView(
-                                  animation: animation,
-                                  animationController: animationController,
-                                  listData: homeList[index],
-                                  callBack: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                        homeList[index].navigateScreen,
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                            gridDelegate:
-                            SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: multiple ? 2 : 1,
-                              mainAxisSpacing: 12.0,
-                              crossAxisSpacing: 12.0,
-                              childAspectRatio: 1.5,
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-        },
-      ),
+      body:Container(
+//        width: width,
+//        height: height -activitySectionTotalHeight-50,
+        child: new GridView.count(
+          padding: const EdgeInsets.only(top: 0.0),
+          crossAxisCount: (MediaQuery.of(context).orientation == Orientation.portrait) ? 3 : 4,
+          children: _menuList.map((Menu menu) {
+            if(null != menu){
+              return new MenuItem(
+                menu: menu,
+//                callback: this,
+              );
+            }
+            return Container();
+          }).toList(),
+        ),
+      )
+
     );
   }
 
@@ -168,60 +126,6 @@ class _HomeScreenState extends State<HomeScreen>with TickerProviderStateMixin  {
           ),
         ],
       ),
-    );
-  }
-}
-class HomeListView extends StatelessWidget {
-  final HomeList listData;
-  final VoidCallback callBack;
-  final AnimationController animationController;
-  final Animation animation;
-
-  const HomeListView(
-      {Key key,
-        this.listData,
-        this.callBack,
-        this.animationController,
-        this.animation})
-      : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: animationController,
-      builder: (BuildContext context, Widget child) {
-        return FadeTransition(
-          opacity: animation,
-          child: new Transform(
-            transform: new Matrix4.translationValues(
-                0.0, 50 * (1.0 - animation.value), 0.0),
-            child: AspectRatio(
-              aspectRatio: 1.5,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: <Widget>[
-                    Image.asset(
-                      listData.imagePath,
-                      fit: BoxFit.cover,
-                    ),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        splashColor: Colors.grey.withOpacity(0.2),
-                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                        onTap: () {
-                          callBack();
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }
