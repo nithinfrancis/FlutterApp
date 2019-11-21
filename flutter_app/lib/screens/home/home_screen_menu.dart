@@ -209,15 +209,15 @@ class MenuList {
             caption:"d",
 //            caption: EduplusLocalizations.localizedValues[EduplusLocalizations.eduplusAppLocale]['diary'],
             route: new UserGuideView()),
-        new Menu(
-            keyId: homework,
-            requiresTracking: false,
-            type: MenuUserType.MenuUserTypeAll,
-            imageName: 'assets/images/eaten.png',
-            caption:"d",
-//            caption: EduplusLocalizations.localizedValues[EduplusLocalizations.eduplusAppLocale]['homework'],
-            route: new UserGuideView()),
-//            route: globals.epRole == "TEACHER" ? HomeworkListTeacher() : HomeworkListParent()),
+//        new Menu(
+//            keyId: homework,
+//            requiresTracking: false,
+//            type: MenuUserType.MenuUserTypeAll,
+//            imageName: 'assets/images/eaten.png',
+//            caption:"d",
+////            caption: EduplusLocalizations.localizedValues[EduplusLocalizations.eduplusAppLocale]['homework'],
+//            route: new UserGuideView()),
+////            route: globals.epRole == "TEACHER" ? HomeworkListTeacher() : HomeworkListParent()),
 
     ];
 
