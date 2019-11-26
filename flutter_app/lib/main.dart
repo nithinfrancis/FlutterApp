@@ -259,7 +259,7 @@ class MyApp extends StatelessWidget {
     };
 
     return new MaterialApp(
-      title: 'EduPlus',
+      title: 'App',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
