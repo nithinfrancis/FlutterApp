@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/question/question_screen.dart';
 
 class DetailScreen extends StatefulWidget {
     @override
@@ -40,12 +41,24 @@ class _DetailState extends State<DetailScreen>
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                    Container(
-                                        margin: EdgeInsets.all(10),
-                                        height: 40.0,
-                                        width: 40.0,
-                                        color: Colors.lightBlueAccent,
-                                        child: Center(child: Text("1")),
+
+
+                                    InkWell(
+                                        onTap: ()
+                                        {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => QuestionScreen()));
+
+                                        },
+                                      child: Container(
+                                          margin: EdgeInsets.all(10),
+                                          height: 40.0,
+                                          width: 40.0,
+                                          color: Colors.lightBlueAccent,
+                                          child: Center(child: Text("1")),
+                                      ),
                                     ),
                                     Container(
                                         margin: EdgeInsets.all(10),

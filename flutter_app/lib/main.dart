@@ -194,8 +194,6 @@ Future main() async {
 //
 //void main() async {
 //  Widget defaultWidget;
-//
-
 //  ///firstly opening database connection
 //  await DBHelper.dbhOpenDatabase();
 //  EduPlusSharedPreference prefs = new EduPlusSharedPreference();
