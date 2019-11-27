@@ -28,15 +28,33 @@ class _QuestionState extends State<QuestionScreen>
     );
     return new Scaffold(
 //            key: _scaffoldKey,
-        appBar: appBar,
+//        appBar: appBar,
         body:
         SafeArea(
             top: false,
             bottom: false,
             child: new Container(
 
-              child:ListView(
+            color:Colors.grey ,
+              child: Center(
+                child: Card(
+                  margin: EdgeInsets.fromLTRB(10.0,50.0, 10.0,50.0),
+                  child:Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
 
+                        Text("Question"),
+                        Text("any data")
+                      ],),
+                      Container(
+                        height: 400.0,
+                        width: 200.0,
+                      ),
+                    ],
+                  ),
+                ),
               ),
 
             ))  );
