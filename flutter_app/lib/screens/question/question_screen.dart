@@ -51,6 +51,7 @@ class _QuestionState extends State<QuestionScreen>
                       Container(
                         height: 400.0,
                         width: 200.0,
+                        color: Colors.grey,
                       ),
                     ],
                   ),
